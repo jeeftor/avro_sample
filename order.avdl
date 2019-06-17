@@ -1,0 +1,36 @@
+@namespace("org.jeeftor.avro")
+protocol TacoRequest {
+
+enum MeatType{
+  CHICKEN,
+  BEEF,
+  TURKEY,
+  FISH
+}
+
+enum CheeseType {
+  GROSS_VEGAN,
+  ACTUAL_COW_CHEESE,
+  GOAT_CHEESE
+}
+
+enum Toppings {
+  LECHUGA,
+  TOMATO,
+  SAUCE
+}
+
+record Taco {
+  MeatType meat;
+  CheeseType cheese;
+  array<Toppings> toppings;
+}
+
+
+record Order {
+  union { string, integer } order_id;
+
+  array<Taco> tacos;
+}
+
+}
